@@ -13,6 +13,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 0.9.0'
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'spring'
   gem 'byebug'
   gem 'pry'
@@ -24,7 +25,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
