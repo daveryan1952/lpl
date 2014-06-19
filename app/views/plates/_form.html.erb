@@ -1,30 +1,46 @@
-<%= form_for @post do |f| %>
+<!-- app/views/plates/_form.html.erb -->
+<%= form_for(@plate) do |f| %>
+
+<% if @plate.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@plate.errors.count, "error") %>
+      prohibited this plate from being saved:</h2>
+    <ul>
+      <% @plate.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="form-group">
-  <%= f.label :title %>
-  <%= f.text_field :title, class: "form-control" %>
-</div>
+  <%= f.label :plate_number, "Plate Number" %>
+  <%= f.text_field :plate_number %>
+</div><br><br>
 <div class="form-group">
-  <%= f.label :content %>
-  <%= f.text_area :content, rows: 20, class: "form-control" %>
-</div>
-<div>
-  <%= f.label :asset, "File" %><br>
-  <%= f.file_field :asset %>
-</div>
+  <%= f.label :plate_image, "Image File" %>
+  <%= f.file_field :plate_image %>
+</div><br><br>
 <div class="form-group">
-  <%= f.label :tag_names %><br>
-  <%= f.text_field :tag_names, class: "form-control" %>
-</div>
+  <%= f.label :state, "State" %>
+  <%= f.text_field :state, class: "form-control" %>
+</div><br><br>
 <div class="form-group">
-  <%= f.label :author %>
-  <%= f.text_field :author, class: "form-control" %>
-</div>
-<div class="form-group">
-  <%= f.label :published %>
-  <%= f.check_box :published %>
-</div>
+  <%= f.label :input_rating, "Plate Rating" %>
+  <%= f.select :input_rating, options_for_select(RATINGS)  %>
+</div><br><br>
+
+<h2>Translation</h2>
+<!-- %= f.fields_for :translations do |ff| %-->
+<%= f.fields_for :translations do |ff| %>
+  <div>
+<!-- %= ff.label :meaning, "Translation" %-->
+    <%= ff.text_area :meaning, rows: 4 %>
+  </div><br><br>
+<% end %>
 
 <%= f.submit "Save", :name => "save", class: "btn btn-default" %>
+
 <!--%= f.submit "Save and publish", :name => "publish", class: "btn btn-default" %>
 <!--%= f.submit_tag "Save and publish" %>
 <!--%= f.submit_tag "Save as draft" %>
