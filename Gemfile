@@ -11,6 +11,11 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 0.9.0'
+gem 'orm_adapter', '~> 0.1'
+gem 'railties', '< 5', '>= 3.2.6'
+gem 'thread_safe', '~> 0.1'
+gem 'warden', '~> 1.2.3'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'

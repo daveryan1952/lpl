@@ -169,8 +169,8 @@ input[type="text"], input[type="password"], textarea {
                         Number</span></td>
                     <td style="width: 158px;"><span style="font-weight: bold;">Plate
                         Image</span></td>
-                    <td style="width: 141px;"><span style="font-weight: bold;">Contributor</span></td>
-                    <td><span style="font-weight: bold;">Translation</span></td>
+                    <td style="width: 141px;"><span style="font-weight: bold;">Plate Contributor</span></td>
+                    <td><span style="font-weight: bold;">First Translation</span></td>
                   </tr>
                   <% @plates.each do |plate| %>
                   <tr>
@@ -214,8 +214,26 @@ input[type="text"], input[type="password"], textarea {
           <br>
           <br>
           <br>
-          <a target="_top" href="">Signin</a><br>
-          <br>
+<%-   if user_signed_in? -%> 
+<a> You are signed in as</a><br>
+<%= current_user.first_name %> <%= current_user.last_name %><br><br>    
+                <%= content_tag :li do %>
+                  <%= link_to edit_user_registration_path do %>
+                    <i class="fa fa-cog fa-lg"></i> <%= t 'edit_user_registration' %>
+                  <% end %>
+                <% end %><br>
+                <%= content_tag :li do %>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <i class="fa fa-power-off fa-lg"></i> <%= t 'sign_out' %>
+                  <% end %>
+                <% end %><br>
+    
+<%-   else %>
+  <%= render 'devise/menu/login_items' %><br>
+  <%= render 'devise/menu/registration_items' %><br>
+<% end %>
+<%= yield %>
+
           <a target="_top" href="file:///C:/Users/DaveRyan/Documents/License%20Plate%20Lingo/index.html">Search
             for plates</a><br>
           <br>

@@ -34,4 +34,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # added per devise:install notes
+  config.action_mailer.default_url_options = { host: 'http://daveryanror-101377.use1-2.nitrousbox.com:3000' } 
 end
